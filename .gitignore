@@ -3,4 +3,4 @@
 .idea
 # django stuff
 mablero2/db.sqlite3
-img
+mablero2/main/static/deps/img

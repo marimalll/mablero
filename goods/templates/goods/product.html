@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="product-detail container">
+    <div class="product-card-large">
+        <div class="product-image-block">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image-main"/>
+        </div>
+        <div class="product-info-block">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-description">{{ product.description }}</p>
+            <span class="price">{{ product.price }} ₽</span>
+            <button class="btn-mn">Добавить в корзину</button>
+            <div class="product-meta">
+                <span>Категория: {{ product.category }}</span>
+                <span>Артикул:</span>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,121 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="catalog container">
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Введите нужный товар...">
+                <button class="search-btn">Найти</button>
+            </div>
+        </div>
+
+        <section class="categories">
+            <a href="catalog.html#living-room" class="category">Для гостиной</a>
+            <a href="catalog.html#bedroom" class="category">Для спальни</a>
+            <a href="catalog.html#kitchen" class="category">Для кухни</a>
+            <a href="catalog.html#office" class="category">Для офиса</a>
+        </section>
+
+        <section id="living-room" class="product-list">
+            <h2>Гостинная</h2>
+            <div class="sofas">
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/1_1.jpg" alt="Диван современный" />
+                    <h3>Диван-кровать Дени</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">25 999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/2_1.jpg" alt="Диван современный" />
+                    <h3>Угловой диван-кровать Слим</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">31 999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/3_1.jpg" alt="Диван современный" />
+                    <h3>Диван Solan</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">30 599 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/4_1.jpg" alt="Диван современный" />
+                    <h3>Диван-кровать Vesta</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">60 999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/5_1.jpg" alt="Диван современный" />
+                    <h3>Современный диван</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">37 499 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/6_1.jpg" alt="Диван современный" />
+                    <h3>Стильный диван Астра</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">29 999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+            </div>
+            </div>
+            <div class="shelves">
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/shelves/1_1.jpg" alt="Диван современный" />
+                    <h3>Стеллаж на ножках</h3>
+                    <p>описание</p>
+                    <span class="price">5699 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/shelves/2_1.jpg" alt="Диван современный" />
+                    <h3>Простой стеллаж</h3>
+                    <p>описание</p>
+                    <span class="price">5999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/shelves/3_1.jpg" alt="Диван современный" />
+                    <h3>Этажерка в стиле Лофт</h3>
+                    <p>описание</p>
+                    <span class="price">3599 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/shelves/4_1.jpg" alt="Диван современный" />
+                    <h3>Белый стеллаж</h3>
+                    <p>описание</p>
+                    <span class="price">8799 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+            </div>
+            <div class="coffee_tables">
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/coffee_tables/1_1.jpg" alt="Диван современный" />
+                    <h3>Стол Изящность</h3>
+                    <p>описание</p>
+                    <span class="price">3999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/coffee_tables/2_1.jpg" alt="Диван современный" />
+                    <h3>Стол Лофт</h3>
+                    <p>описание</p>
+                    <span class="price">2399 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/coffee_tables/3_1.jpg" alt="Диван современный" />
+                    <h3>Стол деревянный</h3>
+                    <p>описание</p>
+                    <span class="price">5999 ₽</span>
+                    <button class="btn-mn">Добавить в корзину</button>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

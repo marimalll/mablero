@@ -1,0 +1,87 @@
+/* product.css или добавить в catalog.css */
+
+.product-detail {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 0;
+}
+
+.product-card-large {
+    display: flex;
+    gap: 2rem;
+    background: #fff;
+    border-radius: 0.7rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.product-image-block {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image-main {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 0.4rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.product-info-block {
+    flex: 3;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.product-title {
+    font-size: 2rem;
+    color: #720026;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.product-description {
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #720026;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.product-meta {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: #777;
+}
+
+.product-meta span {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+@media (max-width: 900px) {
+    .product-card-large {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+    .product-info-block {
+        padding-left: 0;
+    }
+    .product-image-main {
+        max-width: 250px;
+    }
+}

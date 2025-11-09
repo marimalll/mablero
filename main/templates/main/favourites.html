@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="favourites-page">
+        <div class="favourites-container">
+            <div class="favourites-icon">❤️</div>
+            <h4>{{ title1 }}</h4>
+            <p>{{ text }}</p>
+            <a href="catalog.html" class="btn-favourites">Перейти в каталог</a>
+        </div>
+    </main>
+
+{% endblock content %}

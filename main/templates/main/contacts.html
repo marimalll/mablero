@@ -1,30 +1,14 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mablero - Контакты</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <header class="site-header">
-        <div class="logo"></div>
-            <a href="index.html" class="logo">mablero</a>
-            <nav class="main-nav">
-                <a href="catalog.html">Каталог</a>
-                <a href="favourites.html">Избранное</a>
-                <a href="cart.html">Корзина</a>
-                <a href="login.html">Личный кабинет</a>
-                <a href="contacts.html">Контакты</a>
-            </nav>
-    </header>
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
 
     <!-- Главный баннер контактов -->
     <section class="contacts-hero">
         <div class="container">
             <div class="contacts-content">
                 <div class="contacts-info">
-                    <h1>Наши контакты</h1>
+                    <h1>{{ title1 }}</h1>
                     <p class="lead">Мы всегда рады помочь вам создать уютный дом</p>
 
                     <div class="contact-details">
@@ -80,40 +64,4 @@
             </div>
         </div>
     </section>
-
-
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>mablero</h3>
-                    <p>Всё, что нужно для уюта</p>
-                    <div class="social-links">
-                        <a href="https://vk.com/elvinafayz" target="_blank" title="VKontakte">VK</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Помощь</h3>
-                    <ul>
-                        <li><a href="#">Доставка и оплата</a></li>
-                        <li><a href="#">Гарантия и возврат</a></li>
-                        <li><a href="#">Частые вопросы</a></li>
-                        <li><a href="#">Отзывы</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li>г. Новый Уренгой ул. Сибирская, 26</li>
-                        <li>+7 (800) 555-35-35</li>
-                        <li>elvinafayz@mail.ru</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2025 Mablero. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+{% endblock content %}

@@ -1,0 +1,30 @@
+/* Главный файл - импортирует все модули */
+@import url('header.css');
+@import url('home.css');
+@import url('catalog.css');
+@import url('cart.css');
+@import url('contacts.css');
+@import url('login_register.css');
+@import url('favourites.css');
+/* Базовые стили */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+}
+/* Базовый контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+main {
+    min-height: calc(100vh - 200px); /* Вычитаем высоту шапки и подвала */
+    padding-top: 40px; /* Отступ от шапки */
+}
+
+.account-container,
+.catalog,
+.cart {
+    padding-top: 40px;
+}

@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from debug_toolbar.toolbar import debug_toolbar_urls
+from  mablero1.settings import DEBUG
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,3 +25,5 @@ urlpatterns = [
     path('catalog/', include('goods.urls', namespace='catalog'))
 
 ]
+if DEBUG:
+    urlpatterns += debug_toolbar_urls()

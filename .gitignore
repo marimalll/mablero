@@ -1,6 +1,0 @@
-# python stuff
-.venv
-.idea
-# django stuff
-mablero2/db.sqlite3
-mablero2/main/static/deps/img

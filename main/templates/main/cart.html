@@ -1,0 +1,45 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+    <main class="cart container">
+    <h1>Товары в корзине</h1>
+    <section class="cart-products">
+        <ol>
+            <li class="cart-item">
+                <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/1_1.jpg" alt="Диван современный" />
+                    <h3>Диван-кровать Дени</h3>
+                    <p>Удобный и стильный диван для вашей гостиной.</p>
+                    <span class="price">25 000 ₽</span>
+                    <div class="input-group quantity_goods">
+                        <button class="qty-btn" id="button_minus">−</button>
+                        <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Количество">
+                        <button class="qty-btn" id="button_plus">+</button>
+                    </div>
+                </div>
+            </li>
+            <li class="cart-item">
+              <div class="product-card">
+                <img src="img/furniture_shop_img/living_room/sofas/2_1.jpg" alt="Диван современный" />
+                <div class="product-info">
+                  <h3>Диван-кровать Дени</h3>
+                  <p>Удобный и стильный диван для вашей гостиной.</p>
+                  <span class="price">25 000 ₽</span>
+                  <div class="input-group quantity_goods">
+                    <button class="qty-btn" id="button_minus">−</button>
+                    <input type="number" step="1" min="1" max="10" id="num_count" name="quantity" value="1" title="Количество">
+                    <button class="qty-btn" id="button_plus">+</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+        </ol>
+        </section>
+         <section class="total-cost">
+      <h3>Всего товаров: 2</h3>
+      <h4>Общая сумма: 50 000 ₽</h4>
+      <button class="btn-mn">Перейти к оформлению</button>
+    </section>
+  </main>
+{% endblock content %}

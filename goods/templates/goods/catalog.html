@@ -10,18 +10,10 @@
             </div>
         </div>
 
-        <section class="categories">
-            {% for category in categories %}
-                <a href="catalog.html#living-room" class="category">{{category.name}}</a>
-            {% endfor %}
-
-
-        </section>
 
         <section id="living-room" class="product-list">
 
             {% for product in goods %}
-            <!-- <h2>{{category.name}}</h2> -->
             <div class="sofas">
             <div class="product-card">
                 {% if product.image %}

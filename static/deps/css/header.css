@@ -154,6 +154,15 @@
   font-size: 0.9rem;
 }
 
+
+/* Категории товаров - переопределение Bootstrap */
+.categories-section {
+    background-color: #5a001e !important;
+    padding: 15px 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .site-header {

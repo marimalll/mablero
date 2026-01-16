@@ -10,11 +10,16 @@
         <div class="product-info-block">
             <h1 class="product-title">{{ product.name }}</h1>
             <p class="product-description">{{ product.description }}</p>
-            <span class="price">{{ product.price }} ₽</span>
+            {% if product.discount %}
+                    <p><s>{{product.price}} ₽</s></p>
+                    <p><strong>{{product.sell_price}} ₽</strong></p>
+                    {% else%}
+                    <span class="price">{{product.price}}₽</span>
+                    {% endif %}
             <button class="btn-mn">Добавить в корзину</button>
             <div class="product-meta">
                 <span>Категория: {{ product.category }}</span>
-                <span>Артикул:</span>
+                <span>Артикул: {{product.display_id}}</span>
             </div>
         </div>
     </div>

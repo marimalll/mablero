@@ -30,7 +30,9 @@
                     <img src="{% static "deps/img/furniture_shop_img/Image-not-found.png" %}" alt="{{product.name}}" />
 
                 {% endif %}
-                <h3>{{product.name}}</h3>
+                    <a href="{% url "catalog:product" product.slug %}">
+                    <h3>{{product.name}}</h3>
+                   </a>
                     <p>{{product.description}}</p>
                     <p class="product_id">артикул: {{product.display_id}}</p>
                     {% if product.discount %}

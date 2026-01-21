@@ -67,7 +67,12 @@
 
 
         <section id="living-room" class="product-list">
-
+            {% if request.GET.q %}
+            <h3>Результаты поиска по запросу "{{ request.GET.q }}"</h3>
+            {% if not goods %}
+            <h2>По запросу ничего не найдено</h2>
+            {% endif %}
+            {% endif %}
             {% for product in goods %}
             <div class="sofas">
             <div class="product-card">
@@ -78,9 +83,25 @@
 
                 {% endif %}
                     <a href="{% url "catalog:product" product.slug %}">
-                    <h3>{{product.name}}</h3>
+                    <h3>
+                        {% autoescape off %}
+                         {% if product.headline %}
+                            {{ product.headline }}
+                        {% else %}
+                            {{product.name}}
+                        {% endif %}
+                        {% endautoescape %}
+                    </h3>
                    </a>
-                    <p>{{product.description}}</p>
+                    <p>
+                        {% autoescape off %}
+                         {% if product.bodyline %}
+                            {{ product.bodyline|truncatechars:100 }}
+                        {% else %}
+                            {{product.description|truncatechars:100}}
+                        {% endif %}
+                        {% endautoescape %}
+                    </p>
                     <p class="product_id">артикул: {{product.display_id}}</p>
                     {% if product.discount %}
                     <p><s>{{product.price}} ₽</s></p>
@@ -96,6 +117,7 @@
         </section>
     </main>
 <!-- Пагинация -->
+    {% if goods %}
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center my-4">
             <div class="custom-shadow d-flex">
@@ -118,4 +140,6 @@
             </div>
         </ul>
     </nav>
+    {% endif %}
+
 {% endblock content %}

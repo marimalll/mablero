@@ -25,20 +25,7 @@ def cart(request):
     }
     return render(request, 'main/cart.html', context)
 
-# login и register позднее переместить в отдельные приложения
-def login(request):
-    context = {
-        'title': "mablero авторизация"
-    }
-    return render(request, 'main/login.html', context)
-
-def register(request):
-    context = {
-        'title': "mablero регистрация"
-    }
-    return render(request, 'main/register.html', context)
-
-
+# позднее тоже переместить
 def favourites(request):
     context = {
         'title': "mablero - избранное",

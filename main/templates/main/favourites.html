@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
@@ -7,7 +7,7 @@
             <div class="favourites-icon">❤️</div>
             <h4>{{ title1 }}</h4>
             <p>{{ text }}</p>
-            <a href="catalog.html" class="btn-favourites">Перейти в каталог</a>
+            <a href="{% url 'catalog:index' 'all' %}" class="btn-favourites">Перейти в каталог</a>
         </div>
     </main>
 

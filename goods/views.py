@@ -11,13 +11,11 @@ def catalog(request, category_slug=None):
     query = request.GET.get('q', None)
     if category_slug == 'all':
         goods = Products.objects.all()
-        print(goods)
     elif query:
         goods = q_search(query)
     else:
         goods = Products.objects.filter(category__slug=category_slug)
     if on_sale:
-        print(goods)
         goods = goods.filter(discount__gt=0)
     if order_by and order_by != 'default':
         goods = goods.order_by(order_by)

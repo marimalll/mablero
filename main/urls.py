@@ -22,7 +22,5 @@ urlpatterns = [
     path('contacts/', views.contacts, name='contacts'),
     path('favourites/', views.favourites, name='favourites'),
     path('cart/', views.cart, name='cart'),
-    path('login/', views.login, name='login'),
-    path('register/', views.register, name='register')
 
 ]

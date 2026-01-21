@@ -1,4 +1,4 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block content %}
@@ -31,7 +31,7 @@
             </form>
 
             <div class="auth-switch">
-                <p>Нет аккаунта? <a href="{% url "main:register" %}" onclick="showTab('register')">Зарегистрироваться</a></p>
+                <p>Нет аккаунта? <a href="{% url "users:registration" %}" onclick="showTab('registration')">Зарегистрироваться</a></p>
             </div>
         </div>
 

@@ -7,25 +7,53 @@
         <!-- Форма входа -->
         <div id="login" class="auth-form active">
             <h1>Вход в аккаунт</h1>
-            <form class="auth-form-content">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Ваш email" required>
-                </div>
+            <form action="{% url "user:login" %}" method="post" class="auth-form-content">
+           <!-- для скрытого тега input, для того чтобы не было ошибки доступа -->
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Имя пользователя</label>
+                <input type="username"
+                       id="id_username"
+                       value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+                       name="username" placeholder="Ваш логин" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <input type="password" id="password" placeholder="Ваш пароль" required>
-                </div>
+            <div class="form-group">
+                <label for="id_password">Пароль</label>
+                <input type="password"
+                       id="id_password"
+                       name="password"
+                       placeholder="Ваш пароль" required>
+            </div>
 
-                <div class="form-options">
-                    <label class="checkbox">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                        Запомнить меня
-                    </label>
-                    <a href="#" class="forgot-password">Забыли пароль?</a>
-                </div>
+            <div class="form-options">
+                <label class="checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    Запомнить меня
+                </label>
+                <a href="#" class="forgot-password">Забыли пароль?</a>
+            </div>
+<!--            {% for item in form %}-->
+<!--            <div class="form-group">-->
+<!--                    <label for="{{ item.id_for_lable }}">{{ item.lable}}</label>-->
+<!--                    {{ item }}-->
+<!--                </div>-->
+<!--            {% endfor %}-->
+
+<!--                <div class="form-group">-->
+<!--                    <label for="password">Пароль</label>-->
+<!--                    <input type="password" id="password" placeholder="Ваш пароль" required>-->
+<!--                </div>-->
+
+<!--                <div class="form-options">-->
+<!--                    <label class="checkbox">-->
+<!--                        <input type="checkbox">-->
+<!--                        <span class="checkmark"></span>-->
+<!--                        Запомнить меня-->
+<!--                    </label>-->
+<!--                    <a href="#" class="forgot-password">Забыли пароль?</a>-->
+<!--                </div>-->
 
                 <button type="submit" class="auth-btn">Войти</button>
             </form>

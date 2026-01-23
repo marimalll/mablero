@@ -20,7 +20,6 @@ app_name = 'main'
 urlpatterns = [
     path('', views.index, name='index'),
     path('contacts/', views.contacts, name='contacts'),
-    path('favourites/', views.favourites, name='favourites'),
     path('cart/', views.cart, name='cart'),
 
 ]

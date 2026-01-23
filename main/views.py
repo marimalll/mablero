@@ -25,12 +25,4 @@ def cart(request):
     }
     return render(request, 'main/cart.html', context)
 
-# позднее тоже переместить
-def favourites(request):
-    context = {
-        'title': "mablero - избранное",
-        'title1': "Вы пока не добавили товары в избранное",
-        'text': "Найдите подходящую мебель в каталоге и добавляйте понравившиеся товары в избранное, чтобы не потерять их"
 
-    }
-    return render(request, 'main/favourites.html', context)

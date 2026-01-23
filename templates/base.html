@@ -21,7 +21,6 @@
             <a href="{% url "main:index" %}" class="logo">mablero</a>
 
             <nav class="main-nav">
-                <a href="{% url "main:favourites" %}">Избранное</a>
                 <a href="{% url "user:users_cart" %}">Корзина</a>
                 {% if user.is_authenticated %}
                     <a href="{% url "users:profile" %}">Личный кабинет</a>
@@ -66,7 +65,7 @@
                         </div>
                     </div>
                     <div class="copyright">
-                        <p>© 2025 Mablero. Все права защищены.</p>
+                        <p>© 2026 Mablero. Все права защищены.</p>
                     </div>
                 </div>
             </footer>

@@ -125,7 +125,7 @@
                     {% else%}
                     <span class="price">{{product.price}}₽</span>
                     {% endif %}
-                    <button class="btn-mn">Добавить в корзину</button>
+                    <a href="{% url "cart:cart_add" product.slug %}" class="btn btn-mn">Добавить в корзину</a>
             </div>
                 </div>
             {% endfor %}

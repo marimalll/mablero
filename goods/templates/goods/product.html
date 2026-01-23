@@ -37,7 +37,7 @@
             </div>
 
             <div class="product-actions">
-                <button class="btn-primary add-to-cart">Добавить в корзину</button>
+                <a href="{% url "cart:cart_add" product.slug %}" class="btn btn-mn">Добавить в корзину</a>
             </div>
 
             <div class="product-meta">

@@ -10,6 +10,9 @@
             <form action="{% url "user:login" %}" method="post" class="auth-form-content">
            <!-- для скрытого тега input, для того чтобы не было ошибки доступа -->
             {% csrf_token %}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value={{request.GET.next}}>
+            {% endif %}
             <div class="form-group">
                 <label for="id_username">Имя пользователя</label>
                 <input type="text"

@@ -9,63 +9,79 @@
                 <button class="search-btn">Найти</button>
             </div>
         </form>
-        <!--Форма фильтров -->
-        <div class="filter-group mb-3">
-        <div class="dropdown">
-            <button class="btn filter-toggle btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-funnel me-1"></i>Фильтры и сортировка
-            </button>
 
-            <form action="{% if request.Get.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" slug_url %}{% endif %}" method="get" class="dropdown-menu p-3 bg-dark shadow-lg" data-bs-theme="dark" style="min-width: 280px;">
-                <!-- Сохранение поискового запроса -->
-                {% if request.Get.q %}
-                <input type="hidden" name="q" value="{{ request.GET.q}}">
-                {% endif %}
-
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" name="on_sale" id="saleCheck" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %}>
-                    <label class="form-check-label text-white" for="saleCheck">
-                        Только товары по акции
-                    </label>
-                </div>
-
-                <hr class="dropdown-divider bg-light opacity-25 my-2">
-
-                <small class="text-white-50 mb-2 d-block">Сортировка по цене:</small>
-
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="order_by" id="sortDefault" value="default" {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
-                    <label class="form-check-label text-white" for="sortDefault">По умолчанию</label>
-                </div>
-
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="order_by" id="sortAsc" value="price" {% if request.GET.order_by == 'price' %}checked{% endif %}>
-                    <label class="form-check-label text-white" for="sortAsc">Сначала дешевые</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="order_by" id="sortDesc" value="-price" {% if request.GET.order_by == '-price' %}checked{% endif %}>
-                    <label class="form-check-label text-white" for="sortDesc">Сначала дорогие</label>
-                </div>
-
-                <hr class="dropdown-divider bg-light opacity-25 my-3">
-
-                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
-                    <i class="bi bi-check-circle me-1"></i>Применить фильтры
+        <!-- Секция с фильтрами и категориями -->
+        <div class="filters-row mb-3">
+            <div class="dropdown d-inline-block me-3">
+                <button class="btn filter-toggle btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list-ul me-1"></i>Категории товаров
                 </button>
-
-                {% if request.GET %}
-                <a href="{% url "catalog:index" slug_url %}" class="btn btn-outline-light w-100 py-1 mt-1 text-decoration-none small">
-                    Сбросить все
-                </a>
-                {% endif %}
-            </form>
+                <ul class="dropdown-menu bg-dark" data-bs-theme="dark" aria-labelledby="categoriesDropdown" style="min-width: 250px;">
+                    {% tag_categories as categories %}
+                    {% for category in categories %}
+                        <li><a href="{% url "catalog:index" category.slug %}" class="dropdown-item text-white">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 
+    <div class="dropdown d-inline-block">
+        <!-- Фильтры -->
+        <div class="filter-group">
+            <div class="dropdown">
+                <button class="btn filter-toggle btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-funnel me-1"></i>Фильтры и сортировка
+                </button>
 
+                <form action="{% if request.Get.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" slug_url %}{% endif %}" method="get" class="dropdown-menu p-3 bg-dark shadow-lg" data-bs-theme="dark" style="min-width: 280px;">
+                    <!-- Сохранение поискового запроса -->
+                    {% if request.Get.q %}
+                    <input type="hidden" name="q" value="{{ request.GET.q}}">
+                    {% endif %}
 
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="on_sale" id="saleCheck" value="on" {% if request.GET.on_sale == 'on' %}checked{% endif %}>
+                        <label class="form-check-label text-white" for="saleCheck">
+                            Только товары по акции
+                        </label>
+                    </div>
 
+                    <hr class="dropdown-divider bg-light opacity-25 my-2">
+
+                    <small class="text-white-50 mb-2 d-block">Сортировка по цене:</small>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="order_by" id="sortDefault" value="default" {% if not request.GET.order_by or request.GET.order_by == 'default' %}checked{% endif %}>
+                        <label class="form-check-label text-white" for="sortDefault">По умолчанию</label>
+                    </div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="order_by" id="sortAsc" value="price" {% if request.GET.order_by == 'price' %}checked{% endif %}>
+                        <label class="form-check-label text-white" for="sortAsc">Сначала дешевые</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="order_by" id="sortDesc" value="-price" {% if request.GET.order_by == '-price' %}checked{% endif %}>
+                        <label class="form-check-label text-white" for="sortDesc">Сначала дорогие</label>
+                    </div>
+
+                    <hr class="dropdown-divider bg-light opacity-25 my-3">
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                        <i class="bi bi-check-circle me-1"></i>Применить фильтры
+                    </button>
+
+                    {% if request.GET %}
+                    <a href="{% url "catalog:index" slug_url %}" class="btn btn-outline-light w-100 py-1 mt-1 text-decoration-none small">
+                        Сбросить все
+                    </a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+    <p></p>
         <section id="living-room" class="product-list">
             {% if request.GET.q %}
             <h3>Результаты поиска по запросу "{{ request.GET.q }}"</h3>

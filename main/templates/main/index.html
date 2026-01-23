@@ -9,21 +9,21 @@
             <p>
                {{ text }}
             </p>
-            <a href="catalog.html" class="btn-mn">В каталог</a>
+            <a href="{% url 'catalog:index' 'all' %}" class="btn-mn">В каталог</a>
         </div>
         <img src={% static "deps/img/couch.png" %} alt="Диван из коллекции"/>
     </div>
     <section class="promo-section">
       <div class="promo-list">
-        <a href="catalog.html" class="promo-card">
+        <a href="{% url 'catalog:index' 'all' %}" class="promo-card">
           <img src={% static "deps/img/sale1.jpg" %} alt="Скидка на диваны">
           <span>Диваны — скидка до 30%</span>
         </a>
-        <a href="catalog.html" class="promo-card">
+        <a href="{% url 'catalog:index' 'all' %}" class="promo-card">
           <img src={% static "deps/img/sale2.png" %} alt="Скидка на столы">
           <span>Кухонные столы — выгодно!</span>
         </a>
-        <a href="catalog.html" class="promo-card">
+        <a href="{% url 'catalog:index' 'all' %}" class="promo-card">
           <img src={% static "deps/img/sale3.jpg" %} alt="Подарочные сертификаты">
           <span>Подарочные сертификаты на мебель</span>
         </a>

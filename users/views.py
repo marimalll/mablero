@@ -64,3 +64,6 @@ def registration(request):
     context = {'title': 'mablero - Регистрация',
                'form': form}
     return render(request, 'users/registration.html', context)
+
+def users_cart(request):
+    return render(request, 'users/users_cart.html')

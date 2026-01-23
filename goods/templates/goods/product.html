@@ -3,25 +3,48 @@
 
 {% block content %}
 <main class="product-detail container">
-    <div class="product-card-large">
-        <div class="product-image-block">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image-main"/>
+    <article class="product-layout">
+        <!-- Картинка слева в рамке -->
+        <div class="product-image-framed">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="framed-img">
+            {% else %}
+                <img src="{% static 'deps/img/furniture_shop_img/Image-not-found.png' %}" alt="{{ product.name }}" class="framed-img">
+            {% endif %}
         </div>
-        <div class="product-info-block">
-            <h1 class="product-title">{{ product.name }}</h1>
-            <p class="product-description">{{ product.description }}</p>
-            {% if product.discount %}
-                    <p><s>{{product.price}} ₽</s></p>
-                    <p><strong>{{product.sell_price}} ₽</strong></p>
-                    {% else%}
-                    <span class="price">{{product.price}}₽</span>
+
+        <!-- Контент справа -->
+        <div class="product-content-right">
+            <div class="product-header">
+                <h1 class="product-title">{{ product.name }}</h1>
+
+                <div class="price-section">
+                    {% if product.discount %}
+                        <!-- Твоя старая цена с зачеркиванием -->
+                        <div class="price-row">
+                            <s class="old-price">{{ product.price }} ₽</s>
+                            <strong class="current-price">{{ product.sell_price }} ₽</strong>
+                        </div>
+                        <span class="discount-badge">{{ product.get_discount_percent }}%</span>
+                    {% else %}
+                        <span class="price">{{ product.price }} ₽</span>
                     {% endif %}
-            <button class="btn-mn">Добавить в корзину</button>
+                </div>
+            </div>
+
+            <div class="product-description-full">
+                {{ product.description|linebreaks }}
+            </div>
+
+            <div class="product-actions">
+                <button class="btn-primary add-to-cart">Добавить в корзину</button>
+            </div>
+
             <div class="product-meta">
-                <span>Категория: {{ product.category }}</span>
-                <span>Артикул: {{product.display_id}}</span>
+                <span>Категория: <strong>{{ product.category.name }}</strong></span>
+                <span>Артикул: {{ product.display_id }}</span>
             </div>
         </div>
-    </div>
+    </article>
 </main>
-{% endblock content %}
+{% endblock %}

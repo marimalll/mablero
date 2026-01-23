@@ -35,21 +35,45 @@
     background-color: #994060;
 }
 
-/* Делаем категории горизонтальными (оставляем ваши стили, только добавляем flex) */
-.categories {
+/* Контейнер для фильтров и категорий */
+.filters-categories-container {
     display: flex;
-    gap: 2vw;
-    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-group {
+    display: inline-block;
+}
+
+/* Стили для кнопок фильтров и категорий */
+.filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.filter-toggle:hover {
+    background-color: #f8f9fa;
+    border-color: #720026;
+    color: #000;
+}
+
+.filter-toggle i {
+    font-size: 1.1rem;
 }
 
 /* Остальные ваши стили для каталога остаются без изменений */
 .catalog {
     padding: 3% 5%;
 }
-
-
 
 .categories a {
   color: black;
@@ -63,6 +87,7 @@
   border-bottom: 0.2rem solid #E7EBC5;
   transform: translateY(-0.125rem);
 }
+
 .product-list > h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;

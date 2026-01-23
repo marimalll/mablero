@@ -37,7 +37,8 @@
             </div>
 
             <div class="product-actions">
-                <a href="{% url "cart:cart_add" product.slug %}" class="btn btn-mn">Добавить в корзину</a>
+                 <a href="{% url "cart:cart_add" %}" class="btn btn-mn add-to-cart" data-product-id="{{product.id}}">
+                {% csrf_token %} Добавить в корзину</a>
             </div>
 
             <div class="product-meta">

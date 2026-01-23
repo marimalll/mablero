@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load carts_tags %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">Корзина</h1>
+    <div class="container" id="cart-items-container">
+        <!-- Разметка корзины -->
+        {% include "carts/includes/included_cart.html" %}
+        <!-- Закончилась разметка корзины -->
+    </div>
+    <div class="text-center mt-4">
+        {% user_carts request as carts %}
+        {% if carts %}
+        <a class="btn btn-dark" href="#">Оформить заказ</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

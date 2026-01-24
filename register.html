@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mablero - Личный кабинет</title>
+    <link rel="stylesheet" href="css/style.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo"></div>
+            <a href="index.html" class="logo">mablero</a>
+            <nav class="main-nav">
+                <a href="catalog.html">Каталог</a>
+                <a href="favourites.html">Избранное</a>
+                <a href="cart.html">Корзина</a>
+                <a href="login.html">Личный кабинет</a>
+                <a href="contacts.html">Контакты</a>
+            </nav>
+    </header>
+
+    <main class="account-container">
+        <!-- УБРАТЬ класс auth-form и добавить active -->
+        <div class="auth-form-content">
+            <h1>Регистрация</h1>
+            <form class="auth-form-fields">
+                <div class="form-group">
+                    <label for="fullname">ФИО</label>
+                    <input type="text" id="fullname" placeholder="Ваше полное имя" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" placeholder="Ваш email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" placeholder="+7 (___)-___-__-__" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Пароль</label>
+                    <input type="password" id="reg-password" placeholder="Придумайте пароль" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Подтвердите пароль</label>
+                    <input type="password" id="confirm-password" placeholder="Повторите пароль" required>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        Я согласен с условиями использования
+                    </label>
+                </div>
+
+                <button type="submit" class="auth-btn">Зарегистрироваться</button>
+            </form>
+
+            <div class="auth-switch">
+                <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div>© 2025 Mablero. Все права защищены.</div>
+        <div>
+            <a href="contacts.html">Контакты</a> |
+            <a href="privacy.html">Политика конфиденциальности</a>
+        </div>
+    </footer>
+</body>
+</html>

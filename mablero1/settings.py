@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,11 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--tuk%is(zmu-%t^)wd*agc#u!-c6(&qu39s@uj_2=7t&okc@ux'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--tuk%is(zmu-%t^)wd*agc#u!-c6(&qu39s@uj_2=7t&okc@ux')
+DEBUG = os.environ.get('DEBUG', 'True') == 'False'
 
 ALLOWED_HOSTS = ['*']
 
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
@@ -93,6 +94,13 @@ DATABASES = {
     }
 }
 
+# Render PostgreSQL (переопределяет настройки выше, если есть DATABASE_URL)
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -138,8 +146,26 @@ INTERNAL_IPS = [
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+STATIC_URL = 'static/'
+
+# Папка для collectstatic
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Дополнительные папки со статикой
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+# Whitenoise для раздачи статики на Render
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# MEDIA (загрузки пользователей)
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = 'media/'
+
 
 
 # Default primary key field type
@@ -149,3 +175,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_URL = '/user/login/'
+
+# SECURITY (для продакшена на Render)
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True

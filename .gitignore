@@ -1,0 +1,46 @@
+﻿
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+migrations/__pycache__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Render
+*.render.yaml
+
+# Local settings / secrets
+local_settings.py
+secrets.py
+
+# Статические файлы (собираются автоматически)
+staticfiles/
+
+# PostgreSQL backups
+*.dump
+*.backup
+*.sql.backup
+
+# Логи приложений
+logs/

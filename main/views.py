@@ -18,11 +18,6 @@ def contacts(request):
     }
     return render(request, 'main/contacts.html', context)
 
-def cart(request):
-    context = {
-        'title': "mablero - корзина",
-        'title1': "пока что пусто"
-    }
-    return render(request, 'main/cart.html', context)
+
 
 

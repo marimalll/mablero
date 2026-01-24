@@ -1,0 +1,1 @@
+web: gunicorn mablero2.wsgi

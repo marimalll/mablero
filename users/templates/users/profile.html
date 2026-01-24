@@ -61,7 +61,7 @@
                                             {% endif %}
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-dark">Сохранить</button>
+                                    <button type="submit" class="btn auth-btn">Сохранить</button>
                                 </form>
                             </div>
                         </div>
@@ -73,10 +73,11 @@
                                     <!-- Разметка корзины -->
                                     {% include "carts/includes/included_cart.html" %}
                                     <!-- Закончилась разметка корзины -->
-                                </div>
+                                </div >
                                 {% user_carts request as carts %}
                                 {% if carts %}
-                                <a class="btn btn-dark" href="{% url "orders:create_order"%}">Оформить заказ</a>
+                                <div style="text-align: center;">
+                                <a class="btn btn-dark" href="{% url "orders:create_order"%}">Оформить заказ</a></div>
                                 {% endif %}
                             </div>
                         </div>

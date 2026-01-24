@@ -76,7 +76,7 @@
                                 </div>
                                 {% user_carts request as carts %}
                                 {% if carts %}
-                                <a class="btn btn-dark" href="#">Оформить заказ</a>
+                                <a class="btn btn-dark" href="{% url "orders:create_order"%}">Оформить заказ</a>
                                 {% endif %}
                             </div>
                         </div>

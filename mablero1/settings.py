@@ -160,9 +160,9 @@ STATICFILES_DIRS = [
 # Whitenoise для раздачи статики на Render
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# MEDIA (загрузки пользователей)
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = 'media/'
+# # MEDIA (загрузки пользователей)
+# MEDIA_ROOT = BASE_DIR / 'media'
+# MEDIA_URL = 'static/'
 
 
 
@@ -180,3 +180,6 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+if 'RENDER' in os.environ:
+    DEBUG = False

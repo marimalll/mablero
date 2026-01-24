@@ -7,7 +7,7 @@
         <!-- Картинка слева в рамке -->
         <div class="product-image-framed">
             {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="framed-img">
+                <img src="{{ product.image }}" alt="{{ product.name }}" class="framed-img">
             {% else %}
                 <img src="{% static 'deps/img/furniture_shop_img/Image-not-found.png' %}" alt="{{ product.name }}" class="framed-img">
             {% endif %}

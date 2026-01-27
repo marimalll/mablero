@@ -23,6 +23,9 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False, verbose_name="Оплачено")
     status = models.CharField(max_length=50, default="В обработке", verbose_name="Статус заказа")
 
+    @property
+    def total_price(self):
+        return sum(item.products_price() for item in self.orderitem_set.all())
     class Meta:
         db_table = 'order'
         verbose_name = 'Заказ'
@@ -32,7 +35,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name='Заказ')
-    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, default='', verbose_name='Товар')
+    product = models.ForeignKey(to=Products, on_delete=models.SET_DEFAULT, null=True, default=None, verbose_name='Товар')
     name = models.CharField(max_length=150, verbose_name='Название')
     price = models.DecimalField(verbose_name='Цена', max_digits=7, decimal_places=2)
     quantity = models.PositiveIntegerField(verbose_name='Количество', default=0)

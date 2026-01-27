@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models.query import Prefetch
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -8,6 +9,8 @@ from django.views.decorators.csrf import csrf_protect
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
 
 from carts.models import Cart
+
+from orders.models import OrderItem, Order
 
 
 # Create your views here.
@@ -55,7 +58,15 @@ def profile(request):
             return HttpResponseRedirect(reverse('users:profile'))
     else:
         form = ProfileForm(instance=request.user)
-    context = {'title': 'mablero - Кабинет', 'form': form}
+
+    orders = (Order.objects.filter(user=request.user).prefetch_related(
+        Prefetch('orderitem_set',
+                 queryset=OrderItem.objects.select_related('product'),
+                 ))
+    .order_by('-id'))
+    context = {'title': 'mablero - Кабинет',
+               'form': form,
+               'orders': orders}
     return render(request, 'users/profile.html', context)
 
 @csrf_protect

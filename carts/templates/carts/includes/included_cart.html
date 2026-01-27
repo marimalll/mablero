@@ -8,6 +8,12 @@
         <h5 class="card-title">{{cart.product.name}}</h5>
     </div>
     <ul class="list-group list-group-flush">
+        {% if cart.product.image %}
+            <img src="{{ cart.product.image.url }}" alt="{{cart.product.name}}" />
+        {% else %}
+            <img src="{% static "deps/img/furniture_shop_img/Image-not-found.png" %}" alt="{{cart.product.name}}" />
+
+                {% endif %}
         <li class="list-group-item">
             <div class="row text-center">
                 <div class="col p-0">

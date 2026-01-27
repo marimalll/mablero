@@ -10,7 +10,7 @@
             <!-- Пустой блок на усмотрение -->
         </div>
         <div class="col-lg-10">
-            <!-- Контеhт на странице -->
+            <!-- Контент на странице -->
             <div class="row">
                 <div class="container mt-5">
                     <div class="row">
@@ -22,7 +22,17 @@
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-md-12 mb-3 text-center">
+                                            {% if user.image %}
+                                            <img src="{{ user.image }}" alt="Аватар пользователя" class="img-fluid rounded-circle" style="max-width: 150px;">
+                                            {% else %}
+                                            <img src="{% static 'deps/img/base_avatar.jpg' %}" alt="базовый аватар" class="img-fluid rounded-circle" style="max-width: 150px;">
+                                            {% endif %}
+                                            <input type="file" class="form-control mt-3" id="id_image" name="image" accept="image/*">
+                                            {% if form.image.errors %}
+                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.image.errors }}</div>
+                                            {% endif %}
                                         </div>
+
                                         <div class="col-md-12 mb-3">
                                             <label for="id_first_name" class="form-label">Имя*</label>
                                             <input type="text" class="form-control" id="id_first_name" name="first_name" placeholder="Введите ваше имя" value="{{ form.first_name.value }}" required>
@@ -77,9 +87,53 @@
                             <div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                                 <!-- Разметка заказов -->
                                 <div class="container">
+                                    {% for order in orders %}
                                     <div class="accordion" id="accordionExample">
-                                        <!-- ... остальной код аккордеона заказов ... -->
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="heading{{order.id }}">
+                                                <button class="accordion-button"{% if not forloop.first %}collapsed{% endif %}
+                                                        type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#collapse{{order.id }}"
+                                                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                                                        aria-controls="collapse{{order.id }}">
+                                                    Заказ № {{ order.id }} - {{ order.created_timestamp }} | Статус:<strong class="mx-2">{{ order.status }}</strong>
+                                                </button>
+                                            </h2>
+                                            <div id="collapse{{ order.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"  data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <table class="table table-dark table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Товар</th>
+                                                                <th>Количество</th>
+                                                                <th>Цена за ед.</th>
+                                                                <th>Стоимость</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for item in order.orderitem_set.all %}
+                                                            <tr>
+                                                                <td><a class="text-white" href="{% url 'goods:product' item.product.slug %}">{{ item.product.name }}</a></td>
+                                                                <td>{{ item.quantity }}</td>
+                                                                <td>{{ item.price }} ₽</td>
+                                                                <td>{{ item.products_price }} ₽</td>
+
+                                                            </tr>
+                                                        {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="d-flex justify-content-between">
+                                                        <p><strong>Итого:</strong></p>
+                                                        <p><strong>{{ order.total_price }} ₽</strong></p>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+                                    {% endfor %}
                                 </div>
                                 <!-- Закончилась разметка заказов -->
                             </div>

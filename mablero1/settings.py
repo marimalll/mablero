@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--tuk%is(zmu-%t^)wd*ag
 DEBUG = os.environ.get('DEBUG', 'True') == 'False'
 
 ALLOWED_HOSTS = ['*']
-# DEBUG = True
+DEBUG = True
 # ALLOWED_HOSTS = ['*']
 #
 # # Локальная разработка: отключаем HTTPS

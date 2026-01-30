@@ -20,7 +20,7 @@ class OrderItemTabulareAdmin(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'user',
+        'get_user_info',
         'requires_delivery',
         'status',
         'payment_on_get',
@@ -45,3 +45,12 @@ class OrderTabulareAdmin(admin.TabularInline):
     search_fields = ('requires_delivery', 'payment_on_get', 'is_paid', 'created_timestamp')
     readonly_fields = ('created_timestamp',)
     extra = 0
+
+def get_user_info(self, obj):
+    try:
+        if obj.user:
+            return obj.user.username
+        return "Нет пользователя"
+    except Exception:
+        return "Ошибка"
+get_user_info.short_description = 'Пользователь'

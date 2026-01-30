@@ -14,7 +14,7 @@ class OrderitemQuerySet(models.QuerySet):
         return 0
 
 class Order(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, verbose_name="Пользователь", blank=True, null=True, default=None)
+    user = models.ForeignKey(to=User, on_delete=models.SET_DEFAULT, verbose_name="Пользователь", default=None)
     created_timestamp = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания заказа")
     phone_number = models.CharField(max_length=20, verbose_name="Номер телефона")
     requires_delivery = models.BooleanField(default=False, verbose_name="Требуется доставка")
@@ -30,8 +30,21 @@ class Order(models.Model):
         db_table = 'order'
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
     def __str__(self):
-        return f'Заказ № {self.pk} | Покупатель {self.user.first_name} {self.user.last_name}'
+        try:
+            if self.user:
+                # Безопасное получение имени
+                first_name = self.user.first_name or ""
+                last_name = self.user.last_name or ""
+                name = f"{first_name} {last_name}".strip()
+                if name:
+                    return f'Заказ № {self.pk} | Покупатель {name}'
+                return f'Заказ № {self.pk} | Покупатель {self.user.username}'
+            return f'Заказ № {self.pk}'
+        except Exception:
+            # На случай любой ошибки
+            return f'Заказ № {self.pk}'
 
 class OrderItem(models.Model):
     order = models.ForeignKey(to=Order, on_delete=models.CASCADE, verbose_name='Заказ')

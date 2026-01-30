@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--tuk%is(zmu-%t^)wd*agc#u!-c6(&qu39s@uj_2=7t&okc@ux')
-DEBUG = os.environ.get('DEBUG', 'True') == 'False'
+# DEBUG = os.environ.get('DEBUG', 'True') == 'False'
 
 ALLOWED_HOSTS = ['*']
 DEBUG = True
@@ -188,31 +188,6 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'console': {
-                'class': 'logging.StreamHandler',
-            },
-        },
-        'loggers': {
-            'django': {
-                'handlers': ['console'],
-                'level': 'ERROR',
-                'propagate': True,
-            },
-            'django.request': {
-                'handlers': ['console'],
-                'level': 'ERROR',
-                'propagate': False,
-            },
-            'orders': {
-                'handlers': ['console'],
-                'level': 'ERROR',
-            },
-        },
-    }
-
-if 'RENDER' in os.environ:
-    DEBUG = False
+#
+# if 'RENDER' in os.environ:
+#     DEBUG = False

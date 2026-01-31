@@ -33,7 +33,7 @@ $(document).ready(function () {
                  // Через 7сек убираем сообщение
                  setTimeout(function () {
                      successMessage.fadeOut(400);
-                 }, 3000);
+                 }, 5000);
 
                  // Увеличиваем количество товаров в корзине (отрисовка в шаблоне)
                  cartCount++;
@@ -83,7 +83,7 @@ $(document).ready(function () {
                  successMessage.fadeIn(400);
                  setTimeout(function () {
                      successMessage.fadeOut(400);
-                 }, 3000);
+                 }, 5000);
 
                  // Уменьшаем количество товаров в корзине (отрисовка)
                  cartCount -= data.quantity_deleted;
@@ -159,7 +159,7 @@ $(document).ready(function () {
                   // Через 7сек убираем сообщение
                  setTimeout(function () {
                       successMessage.fadeOut(400);
-                 }, 3000);
+                 }, 5000);
  
                  // Изменяем количество товаров в корзине
                  var goodsInCartCount = $("#goods-in-cart-count");
@@ -186,7 +186,7 @@ $(document).ready(function () {
             notification.fadeOut(400, function() {
                 $(this).remove(); // Удаляем из DOM после скрытия
             });
-        }, 3000);
+        }, 5000);
     }
 
     // Также обрабатываем динамические уведомления
@@ -196,7 +196,7 @@ $(document).ready(function () {
             jqNotification.fadeOut(400, function() {
                 $(this).remove();
             });
-        }, 3000);
+        }, 5000);
     }
 
 

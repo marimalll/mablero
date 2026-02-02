@@ -60,7 +60,15 @@
             <div id="cart-items-container">
                 {% include "carts/includes/included_cart.html" %}
                 {% user_carts request as carts %}
+                {% if carts %}
+                <div class="text-center mt-4">
+                <a class="btn checkout-btn btn-lg w-100" href="{% url 'orders:create_order' %}">
+                    Оформить заказ
+                </a>
+                    {% endif %}<p></p>
             </div>
+            </div>
+
 
             <!-- БЛОК 3: ЗАКАЗЫ (без изменений) -->
             <div class="visual-block">

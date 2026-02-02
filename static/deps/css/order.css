@@ -1,0 +1,58 @@
+/* ✅ ОСНОВНОЙ ФИКС - ограничение ширины */
+.checkout-container {
+    max-width: 1000px;  /* Как в корзине */
+    margin: 0 auto;
+    padding: 0 15px;    /* Отступы по краям */
+}
+
+.checkout-page {
+    padding: 2rem 0;
+}
+
+.order-form-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    margin-top: 2rem;
+}
+
+.order-form-card .card-body {
+    padding: 2rem !important;
+}
+
+.form-label {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.checkout-btn {
+    background: linear-gradient(135deg, #720026 0%, #994060 100%);
+    border: none;
+    color: white;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.checkout-btn:hover {
+    background: linear-gradient(135deg, #994060 0%, #b96080 100%);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.bg-light {
+    background: #f8f9fa !important;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+#deliveryAddressField {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .order-form-card .card-body {
+        padding: 1.5rem !important;
+    }
+}

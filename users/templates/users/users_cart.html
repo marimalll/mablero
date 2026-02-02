@@ -8,10 +8,15 @@
     <div class="container" id="cart-items-container">
         <!-- Разметка корзины -->
         {% include "carts/includes/included_cart.html" %}
+
         <!-- Закончилась разметка корзины -->
     </div>
-    <div class="text-center mt-4">
-        {% user_carts request as carts %}
-    </div>
+    {% user_carts request as carts %}
+        {% if carts %}
+        <div class="text-center mt-4">
+        <a class="btn checkout-btn btn-lg" href="{% url 'orders:create_order' %}">
+            Оформить заказ
+        </a>
+            {% endif %}<p></p>
 </div>
 {% endblock %}

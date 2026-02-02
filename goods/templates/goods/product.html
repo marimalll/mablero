@@ -6,17 +6,11 @@
     <article class="product-layout">
         <!-- Картинка слева в рамке -->
         <div class="product-image-framed">
-            <div class="product-image-framed">
             {% if product.image %}
-                <img src="{{ product.image.url }}"
-                     alt="{{ product.name }}"
-                     class="framed-img product-detail-img">  <!-- ИСПРАВЛЕННАЯ СТРОКА -->
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="framed-img-product">
             {% else %}
-                <img src="{% static 'deps/img/furniture_shop_img/Image-not-found.png' %}"
-                     alt="{{ product.name }}"
-                     class="framed-img product-detail-img">  <!-- ТО ЖЕ ИСПРАВЛЕНИЕ ЗДЕСЬ -->
+                <img src="{% static 'deps/img/furniture_shop_img/Image-not-found.png' %}" alt="{{ product.name }}" class="framed-img-product">
             {% endif %}
-</div>
         </div>
 
         <!-- Контент справа -->
@@ -43,9 +37,8 @@
             </div>
 
             <div class="product-actions">
-                <a href="{% url "cart:cart_add" %}" class="btn btn-primary add-to-cart" data-product-id="{{ product.id }}">
-                    {% csrf_token %}Добавить в корзину
-                </a>
+                 <a href="{% url "cart:cart_add" %}" class="btn btn-mn add-to-cart" data-product-id="{{product.id}}">
+                {% csrf_token %} Добавить в корзину</a>
             </div>
 
             <div class="product-meta">

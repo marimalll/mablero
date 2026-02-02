@@ -57,19 +57,9 @@
             </div>
 
             <!-- БЛОК 2: КОРЗИНА (без изменений) -->
-            <div class="visual-block mb-4">
-                <h3 class="cart-title text-center mb-4">Корзина</h3>
-                <div class="cart-container" id="cart-items-container">
-                    {% include "carts/includes/included_cart.html" %}
-                </div>
+            <div>
+                {% include "carts/includes/included_cart.html" %}
                 {% user_carts request as carts %}
-                {% if carts %}
-                <div class="text-center mt-3">
-                    <a class="btn checkout-btn btn-dark btn-lg w-100" href="{% url 'orders:create_order' %}">
-                        Оформить заказ
-                    </a>
-                </div>
-                {% endif %}
             </div>
 
             <!-- БЛОК 3: ЗАКАЗЫ (без изменений) -->

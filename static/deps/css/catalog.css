@@ -1,3 +1,7 @@
+/* ============================================
+   ★ СТАРЫЕ СТИЛИ ПОИСКА И ФИЛЬТРОВ ★ (БЕЗ ИЗМЕНЕНИЙ)
+   ============================================ */
+
 /* Поисковая строка для каталога */
 .search-section {
     max-width: 100%;
@@ -70,81 +74,9 @@
     font-size: 1.1rem;
 }
 
-/* Остальные ваши стили для каталога остаются без изменений */
-.catalog {
-    padding: 3% 5%;
-}
-
-.categories a {
-  color: black;
-  text-decoration: none;
-  padding: 0.4rem 0.6rem;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.categories a:hover {
-  border-bottom: 0.2rem solid #E7EBC5;
-  transform: translateY(-0.125rem);
-}
-
-.product-list > h2 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: #720026;
-    font-weight: 700;
-    font-size: 1.6rem;
-}
-
-.sofas, .shelves, .coffee_tables {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2vw;
-    margin-bottom: 3rem;
-}
-
-.product-card {
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 1rem;
-    max-width: 50%;
-    text-align: center;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-    flex: 1 1 280px;
-}
-
-.product-card:hover {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-    max-width: 100%;
-    border-radius: 0.3rem;
-    margin-bottom: 0.5rem;
-}
-
-.product-card h3 {
-    color: #720026;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.product-card p {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 0.7rem;
-}
-
-.price {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #444;
-    margin-bottom: 1rem;
-    display: block;
-}
-
+/* ============================================
+   ★ СТАРЫЕ КНОПКИ ★ (ОСТАЮТСЯ БЕЗ ИЗМЕНЕНИЙ)
+   ============================================ */
 .btn-mn {
     background-color: #720026;
     color: white;
@@ -159,7 +91,10 @@
 .btn-mn:hover {
     background-color: #994060;
 }
-/* ✅ ИСПРАВЛЕННАЯ СЕТКА + ТЕКСТ */
+
+/* ============================================
+   ★ НОВЫЕ КАРТОЧКИ ТОВАРОВ ★ (УМЕНЬШЕННЫЙ ТЕКСТ)
+   ============================================ */
 .product-grid {
     margin-top: 2rem;
 }
@@ -167,48 +102,56 @@
 .product-card {
     background: white;
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    height: 100%;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    padding: 1rem;  /* ✅ ВНУТРЕННИЕ ОТСТУПЫ */
+    margin-bottom: 1rem;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .product-image {
-    margin: -1rem -1rem 1rem -1rem;  /* ✅ ОТРИЦАТЕЛЬНЫЕ ОТСТУПЫ ДЛЯ КАРТИНКИ */
-    border-radius: 12px 12px 0 0;
+    height: 200px;
     overflow: hidden;
+    border-radius: 12px 12px 0 0;
 }
 
 .product-image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
 }
 
 .product-content {
+    padding: 1.25rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    padding: 0;  /* ✅ УБРАЛ ПАДДИНГ */
 }
 
-.product-title {
-    font-size: 1.1rem !important;     /* ✅ УМЕНЬШИЛ */
+/* ✅ УМЕНЬШИЛ НАЗВАНИЯ ТОВАРОВ */
+.product-title-catalog {
+    font-size: 0.95rem !important;  /* ✅ Было 1.1rem → Стало 0.95rem */
     font-weight: 700;
     color: #720026;
     text-decoration: none;
     margin-bottom: 0.75rem;
-    line-height: 1.4;
+    line-height: 1.3;              /* ✅ УМЕНЬШИЛ межстрочный интервал */
     display: -webkit-box;
-    -webkit-line-clamp: 2;           /* ✅ МАКСИМУМ 2 СТРОКИ */
+    -webkit-line-clamp: 2;         /* ✅ МАКСИМУМ 2 СТРОКИ */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -219,11 +162,11 @@
 
 .product-description {
     color: #666;
-    font-size: 0.875rem !important;   /* ✅ УМЕНЬШИЛ */
+    font-size: 0.85rem;            /* ✅ ТОЖЕ УМЕНЬШИЛ */
     line-height: 1.4;
     margin-bottom: 1rem;
     display: -webkit-box;
-    -webkit-line-clamp: 3;           /* ✅ МАКСИМУМ 3 СТРОКИ */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     flex-grow: 1;
@@ -237,30 +180,58 @@
 
 .old-price {
     color: #999;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 0.25rem;
 }
 
 .new-price, .price {
     color: #720026;
-    font-size: 1.25rem;
+    font-size: 1.2rem;             /* ✅ ЧУТЬ УМЕНЬШИЛ */
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
-/* Адаптивность */
-@media (max-width: 1400px) {
-    .col-xxl-3 { width: 33.333%; }  /* ✅ 3 колонки */
+/* ============================================
+   ★ ОСТАЛЬНЫЕ СТАРЫЕ СТИЛИ ★
+   ============================================ */
+.catalog {
+    padding: 3% 5%;
 }
 
+.categories a {
+    color: black;
+    text-decoration: none;
+    padding: 0.4rem 0.6rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.categories a:hover {
+    border-bottom: 0.2rem solid #E7EBC5;
+    transform: translateY(-0.125rem);
+}
+
+.product-list > h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #720026;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+/* ✅ ОТКЛЮЧАЕМ СТАРЫЕ КОНТЕЙНЕРЫ ТОВАРОВ */
+.sofas, .shelves, .coffee_tables {
+    display: none !important;
+}
+
+/* Адаптивность для карточек */
 @media (max-width: 1200px) {
-    .col-xl-4 { width: 50%; }       /* ✅ 2 колонки */
-    .product-image img { height: 200px; }
+    .product-image { height: 180px; }
+    .product-title { font-size: 0.9rem !important; }
 }
 
 @media (max-width: 768px) {
-    .col-lg-6 { width: 100%; }      /* ✅ 1 колонка */
-    .product-image img { height: 180px; }
-    .product-card { margin-bottom: 1rem; }
+    .product-image { height: 160px; }
+    .product-title { font-size: 0.85rem !important; }
     .product-card:hover { transform: none; }
 }

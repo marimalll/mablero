@@ -99,7 +99,7 @@
 
                         <!-- Контент -->
                         <div class="product-content p-3">
-                            <a href="{% url "catalog:product" product.slug %}" class="product-title">
+                            <a href="{% url "catalog:product" product.slug %}" class="product-title-catalog">
                                 {% autoescape off %}
                                 {% if product.headline %}
                                     {{ product.headline }}

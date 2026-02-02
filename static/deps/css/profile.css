@@ -38,8 +38,8 @@
 }
 
 .orders-accordion-button {
-    background: #720026;
-    color: white;
+    background: #E7EBC5;
+    color: #720026;
     font-weight: 600;
     font-size: 1rem;
     padding: 1rem 1.5rem;
@@ -59,7 +59,7 @@
 }
 
 .order-status {
-    color: #ffd700;
+    color: white;
     font-size: 0.9rem;
 }
 
@@ -82,8 +82,12 @@
 }
 
 .order-product-link {
-    text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 1.1rem;
+    color: #720026;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+    flex: 1;
 }
 
 .order-product-link:hover {

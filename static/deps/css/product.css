@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 480px 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: center;
 }
 
 .product-image-framed {

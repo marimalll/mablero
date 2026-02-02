@@ -1,15 +1,10 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
-
 from carts.models import Cart
 from django.template.loader import render_to_string
 from goods.models import Products
-
-from carts.templatetags.carts_tags import user_carts
 from carts.utils import get_user_carts
 
-
-# Create your views here.
 
 def cart_add(request):
     product_id = request.POST.get("product_id")
@@ -18,25 +13,27 @@ def cart_add(request):
         carts = Cart.objects.filter(user=request.user, product=product)
         if carts.exists():
             cart = carts.first()
-            if cart:
-                cart.quantity += 1
-                cart.save()
+            cart.quantity += 1
+            cart.save()
         else:
             Cart.objects.create(user=request.user, product=product, quantity=1)
     else:
         carts = Cart.objects.filter(session_key=request.session.session_key, product=product)
         if carts.exists():
             cart = carts.first()
-            if cart:
-                cart.quantity += 1
-                cart.save()
+            cart.quantity += 1
+            cart.save()
         else:
             Cart.objects.create(session_key=request.session.session_key, product=product, quantity=1)
-    user_cart = get_user_carts(request)
+
+    user_cart = get_user_carts(request)  # ✅ ВСЕ корзины
     cart_items_html = render_to_string(
         "carts/includes/included_cart.html", {"carts": user_cart}, request=request)
-    response_data = {"message": "Товар добавлен в корзину", "cart_items_html": cart_items_html,}
+
+    response_data = {"message": "Товар добавлен в корзину", "cart_items_html": cart_items_html}
     return JsonResponse(response_data)
+
+
 def cart_change(request):
     cart_id = request.POST.get("cart_id")
     quantity = request.POST.get("quantity")
@@ -45,9 +42,9 @@ def cart_change(request):
     cart.save()
     updated_quantity = cart.quantity
 
-    user_cart = get_user_carts(request)
+    user_cart = get_user_carts(request)  # ✅ ВСЕ корзины (ИСПРАВЛЕНО!)
     cart_items_html = render_to_string(
-        "carts/includes/included_cart.html", {"carts": cart}, request=request)
+        "carts/includes/included_cart.html", {"carts": user_cart}, request=request)
 
     response_data = {
         "message": "Количество изменено",
@@ -55,13 +52,15 @@ def cart_change(request):
         "quantity": updated_quantity,
     }
     return JsonResponse(response_data)
+
+
 def cart_remove(request):
     cart_id = request.POST.get("cart_id")
     cart = Cart.objects.get(id=cart_id)
     quantity = cart.quantity
     cart.delete()
 
-    user_cart = get_user_carts(request)
+    user_cart = get_user_carts(request)  # ✅ Уже правильно
     cart_items_html = render_to_string("carts/includes/included_cart.html", {"carts": user_cart}, request=request)
 
     response_data = {
